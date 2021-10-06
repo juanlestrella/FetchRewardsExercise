@@ -8,11 +8,5 @@ import androidx.room.PrimaryKey
 data class FetchData (
     @PrimaryKey val id: String,
     @NonNull val listId: Int,
-    @NonNull val name: String?,
+    @NonNull val name: String?, //might be null when get
 )
-
-//data class FetchData (
-//    val id: String,
-//    val listId: Int,
-//    val name: String?
-//    )

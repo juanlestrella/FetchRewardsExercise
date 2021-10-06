@@ -5,17 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.fetchrewards.ItemAdapter
 import com.example.fetchrewards.databinding.FragmentFetchBinding
-import com.example.fetchrewards.databinding.ListItemBinding
 import com.example.fetchrewards.models.FetchViewModel
 
 class FetchFragment : Fragment(){
 
-    //private val viewModel: FetchViewModel by viewModels()
     private lateinit var viewModel: FetchViewModel
 
     override fun onCreateView(
@@ -25,13 +21,12 @@ class FetchFragment : Fragment(){
     ): View? {
         val binding = FragmentFetchBinding.inflate(inflater)
         viewModel = ViewModelProvider(this).get(FetchViewModel::class.java)
-
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.itemList.adapter = ItemAdapter()
 
         viewModel.data.observe(viewLifecycleOwner) {
-                datas -> (binding.itemList.adapter as ItemAdapter).submitList(datas)
+                dataList -> (binding.itemList.adapter as ItemAdapter).submitList(dataList)
         }
         return binding.root
     }
