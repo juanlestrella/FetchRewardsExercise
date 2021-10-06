@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class FetchData (
     @PrimaryKey val id: String,
-    val listId: Int,
+    @NonNull val listId: Int,
     @NonNull val name: String?,
 )
 
